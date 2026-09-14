@@ -1,0 +1,10 @@
+.venv/
+.env
+package-lock.json
+package.json
+skills-lock.json
+
+.agents/
+node_modules/
+__pycache__
+versions
