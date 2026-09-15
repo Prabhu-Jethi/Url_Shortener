@@ -18,10 +18,10 @@ class Url(Base):
     __tablename__ = "urls"
 
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
-    short_code: Mapped[str] = mapped_column(String(10), nullable=False)
+    short_code: Mapped[str] = mapped_column(String(10), nullable=False, unique=True)
     long_url: Mapped[str] = mapped_column(Text, nullable=False)
     created_at: Mapped[datetime] = mapped_column(nullable=False, server_default=func.now())
-    expires_at: Mapped[datetime | None] = mapped_column(nullable=True),
+    expires_at: Mapped[datetime | None] = mapped_column(nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="true")
 
     ## Relationship: One url -> many clicks
