@@ -21,8 +21,9 @@ def shorten_url(db: Session, request: ShortenRequest) -> ShortenResponse:
     if request.custom_alias:
         if url_repository.short_code_exists(db, request.custom_alias):
             raise HTTPException(status_code=409, detail="Alias already taken")
-        else:
-            short_code = generate_short_code()
+        short_code = request.custom_alias
+    else:
+        short_code = generate_short_code()
         while url_repository.short_code_exists(db, short_code):
             short_code = generate_short_code()
 

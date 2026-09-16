@@ -23,7 +23,7 @@ def get_url_stats(db: Session, short_code: str) -> ClickStats:
         total_clicks=total,
         created_at=url.created_at,
         is_active=url.is_active,
-        recent_click=[ClickDetails(
+        recent_clicks=[ClickDetails(
             clicked_at=click.clicked_at,
             referrer=click.referrer,
         ip_address=str(click.ip_address) if click.ip_address else None,
