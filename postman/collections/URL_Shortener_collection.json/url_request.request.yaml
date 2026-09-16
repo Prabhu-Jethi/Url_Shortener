@@ -1,0 +1,22 @@
+$kind: http-request
+url: "{{base_url}}/expired"
+method: GET
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: ""
+scripts:
+  - type: afterResponse
+    code: "if (pm.response.code === 201) {\r
+
+      \    var jsonData = pm.response.json();\r
+
+      \    pm.collectionVariables.set(\"short_code\", jsonData.short_code);\r
+
+      \    console.log(\"Saved short_code:\", jsonData.short_code);\r
+
+      }"
+    language: text/javascript
+examples: .resources/url_request.resources/examples
+order: 1789584891133

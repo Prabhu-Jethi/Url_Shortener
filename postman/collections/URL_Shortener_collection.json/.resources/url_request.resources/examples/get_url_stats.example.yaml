@@ -1,0 +1,44 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/{{short_code}}/stats"
+  method: GET
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: "// {\r
+
+      //     \"long_url\": \"https://github.com/Prabhu-Jethi\",\r
+
+      //     \"custom_alias\": \"uni\",\r
+
+      //     \"expires_at\": \"2026-09-17T02:00:00+05:30\"\r
+
+      // }"
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    date: Wed, 16 Sep 2026 20:09:24 GMT
+    server: uvicorn
+    content-length: "280"
+    content-type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "short_code": "uni",
+        "long_url": "https://github.com/Prabhu-Jethi",
+        "total_clicks": 1,
+        "created_at": "2026-09-16T20:07:34.200625",
+        "is_active": true,
+        "recent_clicks": [
+          {
+            "clicked_at": "2026-09-16T20:09:15.746308",
+            "referrer": null,
+            "ip_address": "127.0.0.1",
+            "user_agent": "PostmanRuntime/2.6.0"
+          }
+        ]
+      }
+order: 1789589484205

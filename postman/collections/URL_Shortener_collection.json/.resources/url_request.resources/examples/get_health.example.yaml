@@ -1,0 +1,24 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/"
+  method: GET
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: ""
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    date: Wed, 16 Sep 2026 20:21:20 GMT
+    server: uvicorn
+    content-length: "20"
+    content-type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "status": "healthy"
+      }
+order: 4143227715321537

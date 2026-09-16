@@ -1,0 +1,43 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/shorten"
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: "{\r
+
+      \    \"long_url\": \"invalid-url\",\r
+
+      \    \"custom_alias\": \"abcdefghij\"\r
+
+      }"
+response:
+  statusCode: 422
+  statusText: Unprocessable Entity
+  headers:
+    date: Wed, 16 Sep 2026 20:17:45 GMT
+    server: uvicorn
+    content-length: "194"
+    content-type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "detail": [
+          {
+            "type": "url_parsing",
+            "loc": [
+              "body",
+              "long_url"
+            ],
+            "msg": "Input should be a valid URL, relative URL without a base",
+            "input": "invalid-url",
+            "ctx": {
+              "error": "relative URL without a base"
+            }
+          }
+        ]
+      }
+order: 2960863108869404

@@ -1,0 +1,36 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/shorten"
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: "{\r
+
+      \    \"long_url\": \"https://github.com/Prabhu-Jethi\",\r
+
+      \    \"custom_alias\": \"123abc\",\r
+
+      \    \"expires_at\": \"2026-09-17T02:00:00+05:30\"\r
+
+      }"
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    date: Wed, 16 Sep 2026 20:22:50 GMT
+    server: uvicorn
+    content-length: "188"
+    content-type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "short_code": "123abc",
+        "short_url": "http://localhost:8000/123abc",
+        "long_url": "https://github.com/Prabhu-Jethi",
+        "created_at": "2026-09-16T20:23:11.260590",
+        "expires_at": "2026-09-16T20:30:00"
+      }
+order: 3415624420063729

@@ -1,0 +1,32 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/shorten"
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: "{\r
+
+      \    \"long_url\": \"https://github.com/Prabhu-Jethi\",\r
+
+      \    \"custom_alias\": \"abc\",\r
+
+      \    \"expires_at\": \"2026-09-17T02:00:00+05:30\"\r
+
+      }"
+response:
+  statusCode: 409
+  statusText: Conflict
+  headers:
+    date: Wed, 16 Sep 2026 20:16:59 GMT
+    server: uvicorn
+    content-length: "32"
+    content-type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "detail": "Alias already taken"
+      }
+order: 1762679039498182

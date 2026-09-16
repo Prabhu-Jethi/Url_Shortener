@@ -1,0 +1,29 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/{{short_code}}"
+  method: GET
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: "// {\r
+
+      //     \"long_url\": \"https://github.com/Prabhu-Jethi\",\r
+
+      //     \"custom_alias\": \"uni\",\r
+
+      //     \"expires_at\": \"2026-09-17T02:00:00+05:30\"\r
+
+      // }"
+response:
+  statusCode: 307
+  statusText: Temporary Redirect
+  headers:
+    date: Wed, 16 Sep 2026 20:14:22 GMT
+    server: uvicorn
+    content-length: "0"
+    location: https://github.com/Prabhu-Jethi
+  body:
+    type: text
+    content: ""
+order: 2991945649059889

@@ -1,0 +1,24 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/404-error"
+  method: GET
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: ""
+response:
+  statusCode: 404
+  statusText: Not Found
+  headers:
+    date: Wed, 16 Sep 2026 20:24:39 GMT
+    server: uvicorn
+    content-length: "33"
+    content-type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "detail": "Short link not found"
+      }
+order: 4293745904132360

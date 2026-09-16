@@ -1,0 +1,24 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/expired"
+  method: GET
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: ""
+response:
+  statusCode: 410
+  statusText: Gone
+  headers:
+    date: Wed, 16 Sep 2026 20:29:40 GMT
+    server: uvicorn
+    content-length: "34"
+    content-type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "detail": "This link has expired"
+      }
+order: 4220292156766326
