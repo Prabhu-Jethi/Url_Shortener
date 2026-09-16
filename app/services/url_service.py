@@ -54,8 +54,12 @@ def resolve_redirect(db: Session, short_code: str, referrer: str | None=None,
         raise HTTPException(status_code=410, detail="Short link has been deactivated")
     
     ## Checks if it's expired
-    if url.expires_at and url.expires_at < datetime.now(timezone.utc):
-        raise HTTPException(status_code=410, detail="This link has expired")
+    if url.expires_at:
+        now = datetime.now(timezone.utc)
+        # If DB returned naive datetime, assume it's UTC
+        expires = url.expires_at if url.expires_at.tzinfo else url.expires_at.replace(tzinfo=timezone.utc)
+        if expires < now:
+            raise HTTPException(status_code=410, detail="This link has expired")
     
     ## Record clicks
     click_repository.record_click(db=db, url_id=url.id, referrer=referrer, ip_address=ip_address, user_agent=user_agent)
