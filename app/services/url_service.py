@@ -34,7 +34,7 @@ def shorten_url(db: Session, request: ShortenRequest) -> ShortenResponse:
     ## 3. Build response
     return ShortenResponse(
         short_code=url.short_code,
-        short_url=f"{BASE_URL} / {url.short_code}",
+        short_url=f"{BASE_URL}/{url.short_code}",
         long_url=url.long_url,
         created_at=url.created_at,
         expires_at=url.expires_at
