@@ -8,6 +8,7 @@ from sqlalchemy import (
     Index,
     Text,
     func,
+    DateTime
 )
 from sqlalchemy.dialects.postgresql import INET
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -20,8 +21,8 @@ class Url(Base):
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
     short_code: Mapped[str] = mapped_column(String(10), nullable=False, unique=True)
     long_url: Mapped[str] = mapped_column(Text, nullable=False)
-    created_at: Mapped[datetime] = mapped_column(nullable=False, server_default=func.now())
-    expires_at: Mapped[datetime | None] = mapped_column(nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, server_default="true")
 
     ## Relationship: One url -> many clicks
@@ -40,7 +41,7 @@ class Click(Base):
 
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
     url_id: Mapped[int] = mapped_column(BigInteger, ForeignKey("urls.id", ondelete="CASCADE"), nullable=False)
-    clicked_at: Mapped[datetime] = mapped_column(nullable=False, server_default=func.now())
+    clicked_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     referrer: Mapped[str | None] = mapped_column(Text, nullable=True)
     ip_address: Mapped[str | None] = mapped_column(INET, nullable=True)
     user_agent: Mapped[str | None] = mapped_column(Text, nullable=True)
