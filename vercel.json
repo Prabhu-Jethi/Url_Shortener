@@ -1,5 +1,5 @@
 {
-    "rewrites": [
+    "routes": [
       {
         "src": "/(.*)",
         "destination": "app/main.py"
