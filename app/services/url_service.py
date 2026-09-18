@@ -5,6 +5,7 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from app.repositories import url_repository, click_repository
 from app.schemas.url import ShortenRequest, ShortenResponse
+from app.config import settings
 
 BASE_URL = "http://localhost:8000"
 
@@ -34,7 +35,7 @@ def shorten_url(db: Session, request: ShortenRequest) -> ShortenResponse:
     ## 3. Build response
     return ShortenResponse(
         short_code=url.short_code,
-        short_url=f"{BASE_URL}/{url.short_code}",
+        short_url=f"{settings.BASE_URL}/{url.short_code}",
         long_url=url.long_url,
         created_at=url.created_at,
         expires_at=url.expires_at
